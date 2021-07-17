@@ -1,0 +1,175 @@
+{
+  "Artists":[
+    {
+        "id":1,
+        "name":"Son Tung",
+        "email":"ST@gmail.com",
+        "phone":"0333699999",
+        "achievements": "Top 1 the world"
+    },
+    {
+        "id":2,
+        "name":"Linh",
+        "email":"ST@gmail.com",
+        "phone":"0333699999",
+        "achievements": "Top 1 the world"
+    },
+    {
+        "id":3,
+        "name":"Isacc",
+        "email":"ST@gmail.com",
+        "phone":"0333699999",
+        "achievements": "Top 1 the world"
+    },
+    {
+        "id":4,
+        "name":"Tung",
+        "email":"ST@gmail.com",
+        "phone":"0333699999",
+        "achievements": "Top 1 the world"
+    },
+    {
+        "id":21,
+        "name":"Son",
+        "email":"ST@gmail.com",
+        "phone":"0333699999",
+        "achievements": "Top 1 the world"
+    },
+    {
+        "id":5,
+        "name":"John",
+        "email":"ST@gmail.com",
+        "phone":"0333699999",
+        "achievements": "Top 1 the world"
+    },
+    {
+        "id":6,
+        "name":"BTS",
+        "email":"ST@gmail.com",
+        "phone":"0333699999",
+        "achievements": "Top 1 the world"
+    },
+    {
+        "id":7,
+        "name":"YangYang",
+        "email":"ST@gmail.com",
+        "phone":"0333699999",
+        "achievements": "Top 1 the world"
+    },
+    {
+        "id":8,
+        "name":"Smith",
+        "email":"ST@gmail.com",
+        "phone":"0333699999",
+        "achievements": "Top 1 the world"
+    },
+    {
+        "id":9,
+        "name":"Luhan",
+        "email":"ST@gmail.com",
+        "phone":"0333699999",
+        "achievements": "Top 1 the world"
+    },
+    {
+        "id":10,
+        "name":"Liam",
+        "email":"ST@gmail.com",
+        "phone":"0333699999",
+        "achievements": "Top 1 the world"
+    },
+    {
+        "id":11,
+        "name":"MCK",
+        "email":"ST@gmail.com",
+        "phone":"0333699999",
+        "achievements": "Top 1 the world"
+    },
+    {
+        "id":12,
+        "name":"Jack",
+        "email":"ST@gmail.com",
+        "phone":"0333699999",
+        "achievements": "Top 1 the world"
+    },
+    {
+        "id":13,
+        "name":"Amee",
+        "email":"ST@gmail.com",
+        "phone":"0333699999",
+        "achievements": "Top 1 the world"
+    },
+    {
+        "id": 14,
+        "name":"Son Tung",
+        "email":"ST@gmail.com",
+        "phone":"0333699999",
+        "achievements": "Top 1 the world"
+    },
+    {
+        "id":22,
+        "name":"Suboi",
+        "email":"ST@gmail.com",
+        "phone":"0333699999",
+        "achievements": "Top 1 the world"
+    },
+    {
+        "id":15,
+        "name":"MTP",
+        "email":"ST@gmail.com",
+        "phone":"0333699999",
+        "achievements": "Top 1 the world"
+    },
+    {
+        "id":16,
+        "name":"BlackPink",
+        "email":"ST@gmail.com",
+        "phone":"0333699999",
+        "achievements": "Top 1 the world"
+    },
+    {
+        "id":17,
+        "name":"Khanh Phuong",
+        "email":"ST@gmail.com",
+        "phone":"0333699999",
+        "achievements": "Top 1 the world"
+    },
+    {
+        "id":18,
+        "name":"Chipu",
+        "email":"ST@gmail.com",
+        "phone":"0333699999",
+        "achievements": "Top 1 the world"
+    },
+    {
+        "id":19,
+        "name":"Ho Ngoc Ha",
+        "email":"ST@gmail.com",
+        "phone":"0333699999",
+        "achievements": "Top 1 the world"
+    },
+    {
+        "id":20,
+        "name":"Thuy Linh",
+        "email":"ST@gmail.com",
+        "phone":"0333699999",
+        "achievements": "Top 1 the world"
+    }
+],
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postid": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
