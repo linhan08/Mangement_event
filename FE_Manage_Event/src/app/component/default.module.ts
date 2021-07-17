@@ -43,7 +43,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     BrowserModule,
     Ng2OrderModule,
     Ng2SearchPipeModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    
   ],
 })
 export class DefaultModule { }
