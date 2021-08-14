@@ -1,4 +1,27 @@
-<div class="activity-card">
+
+<h2>Edit infor:</h2>
+<div>
+    <label>Movie name: 
+        <input [ngModel]="movie.name" placeholder="enter Movie name">
+    </label>
+</div>
+<div>
+    <label>Release: 
+        <input [(ngModel)]="movie.release" placeholder="enter release">
+    </label>
+</div>
+
+<h2>My list Movie: {{'2020-01-01' | date}}</h2>
+
+<!-- <ol class="movies">
+    <li class= "movieListItem" *ngFor="let eachMovie of movies">
+         {{eachMovie.name}} - {{eachMovie.releaseYear}}
+    </li>
+</ol> -->
+
+
+
+<!-- <div class="activity-card">
     <h5>Recent activity</h5>
     
     <div class="table-responsive">
@@ -81,4 +104,4 @@
             </tbody>
         </table>
     </div>
-</div>
+</div> -->

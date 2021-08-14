@@ -11,23 +11,47 @@ import { BookingComponent } from './component/admin/booking/booking.component';
 import { ArtistComponent } from './component/admin/artist/artist.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
+import { LoginComponent } from './component/authen/login/login.component';
+import { RegisterComponent } from './component/authen/register/register.component';
+import { AuthGuard } from './services/authen/auth.guard';
+import { ForgotPasswordComponent } from './component/authen/forgot-password/forgot-password.component';
+import { UserHomeComponent } from './component/user/user-home/user-home.component';
 
 const routes: Routes = [
     {
-      path:'home', component: HomeComponent
+      path:'home', component: HomeComponent,
+      pathMatch: 'full'
+    },
+    {
+      path: 'login',
+      component: LoginComponent
+    },
+    {
+      path: 'register',
+      component: RegisterComponent
+    },
+    {
+      path: 'forgot-password',
+      component: ForgotPasswordComponent
     },
     {
       path:'user',
       component: UserLayoutComponent,
-
       children: [
         {
           path: 'cv',
-          component: CvComponent
+          component: CvComponent,
+          canActivate: [AuthGuard]
         },
         {
           path: 'user-profile',
-          component: UserProfileComponent
+          component: UserProfileComponent,
+          canActivate: [AuthGuard]
+        },
+        {
+          path: 'user-home',
+          component: UserHomeComponent,
+          canActivate: [AuthGuard]
         }
       ]
     },
@@ -36,21 +60,20 @@ const routes: Routes = [
       component: AdminLayoutComponent,
 
       children: [
-        // {
-        //   path: '',
-        //   component: DashboardComponent
-        // },
         {
           path: 'dashboard',
-          component: DashboardComponent
+          component: DashboardComponent,
+          canActivate: [AuthGuard]
         },
         {
           path: 'book',
-          component: BookingComponent
+          component: BookingComponent,
+          canActivate: [AuthGuard]
         },
         {
           path: 'artist',
-          component: ArtistComponent
+          component: ArtistComponent,
+          canActivate: [AuthGuard]
         },
         // {
         //   path: 'revenue',
@@ -58,12 +81,13 @@ const routes: Routes = [
         // }
         {
           path: 'admin-profile',
-          component: AdminProfileComponent
+          component: AdminProfileComponent,
+          canActivate: [AuthGuard]
         }
       ]
     },
     { path: '', redirectTo: 'home', pathMatch: 'full' }
-    
+
 ];
 
 @NgModule({

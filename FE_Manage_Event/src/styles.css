@@ -1,16 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.css";
 @import "~font-awesome/css/font-awesome.css";
-@import "@fortawesome/fontawesome-free/css/all.css"; 
+@import "@fortawesome/fontawesome-free/css/all.css";
 @import 'https://fonts.googleapis.com/icon?family=Material+Icons';
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
-
+@import url('https://fonts.googleapis.com/css2?family=Andada+Pro:ital@1&display=swap');
 div.container{
     margin: 0px 40px;
 }
 
 .fill-remaining-space {
-    /* This fills the remaining space, by using flexbox. 
+    /* This fills the remaining space, by using flexbox.
        Every toolbar row uses a flexbox row layout. */
     flex: 1 1 auto;
   }
@@ -21,7 +21,7 @@ div.container{
 
 .controles-container{
     width: 100%;
-    padding: 5%;    
+    padding: 5%;
 }
 
 .controles-container > * {
@@ -52,7 +52,7 @@ snack-bar-container.success {
     font-weight: bold;
   }
 
- 
+
   .hide{
     display: none;
 }
@@ -87,5 +87,3 @@ mat-footer-row mat-footer-cell{
             height: 32px;
             width: 32px;
         }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -3,7 +3,7 @@
         <a class="navbar-brand text-danger fw-bold fs-4 pl-5" href="#home">
             <i class="fa fa-diamond" aria-hidden="true"></i> LT_BC</a>
         <!-- <div class="dropdown">
-            <button class="btn btn-secondary btn-danger px-3" type="button" id="dropdownMenuButton" 
+            <button class="btn btn-secondary btn-danger px-3" type="button" id="dropdownMenuButton"
                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fa fa-bars"></i>
             </button>
@@ -16,7 +16,7 @@
               <a class="dropdown-item" href="#contact">Contact</a>
             </div>
         </div> -->
-        <button class="navbar-toggler bg-danger px-3" type="button" data-toggle="collapse" 
+        <button class="navbar-toggler bg-danger px-3" type="button" data-toggle="collapse"
 			data-target="#navbarResponsive">
 			<span class="navbar-toggler-icon "></span>
 		</button>
@@ -40,17 +40,18 @@
 				<li class="nav-item">
 					<a class="nav-link text-danger fw-bold" href="#contact">Contact</a>
 				</li>
-                <li class="nav-item">
-					<a class="nav-link dropdown-toggle fw-bold" data-toggle="dropdown" 
-                        href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-user-o text-danger" aria-hidden="true"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-end">
-                        <a class="dropdown-item text-danger fw-bold" href="#">Profile</a>
-                        <a class="dropdown-item text-danger fw-bold"  href="#">Settings</a>
-                        <div class="dropdown-divider bg-danger"></div>
-                        <a class="dropdown-item text-danger fw-bold" href="#">Sign Out</a>
-                    </div>
+        <li class="nav-item">
+					<a class="nav-link dropdown-toggle fw-bold" data-toggle="dropdown"
+              href="#" role="button" aria-haspopup="true" aria-expanded="false">
+              <i class="fa fa-user-o text-danger" aria-hidden="true"></i>
+          </a>
+          <div class="dropdown-menu dropdown-menu-end">
+            <a class="dropdown-item text-danger fw-bold" href="#">Profile</a>
+            <a class="dropdown-item text-danger fw-bold"  href="#">Settings</a>
+            <div class="dropdown-divider bg-danger"></div>
+            <a *ngIf="userStatus" class="dropdown-item text-danger fw-bold"
+                (click)="logout()">Sign Out</a>
+        </div>
 				</li>
 			</ul>
 		</div>

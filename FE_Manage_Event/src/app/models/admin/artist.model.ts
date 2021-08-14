@@ -1,8 +1,12 @@
-export class Artist {
-    id?: number;
-    name?: string;
-    email?: string;
-    phone?: string;
-    achievements?: string;
-
+export interface Artist{
+  id:string;
+  firstName:string;
+  lastName:string;
+  email:string;
+  phone:string;
+  gender: string;
+  birthday: string;
+  salary:string;
+  photoURL: string;
 }
+

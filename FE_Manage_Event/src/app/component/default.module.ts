@@ -1,3 +1,4 @@
+import { UserHomeComponent } from './user/user-home/user-home.component';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -17,6 +18,13 @@ import { BookingComponent } from './admin/booking/booking.component';
 import { Ng2OrderModule } from 'ng2-order-pipe';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { LoginComponent } from './authen/login/login.component';
+import { RegisterComponent } from './authen/register/register.component';
+import { ForgotPasswordComponent } from './authen/forgot-password/forgot-password.component';
+import { VerifyEmailComponent } from './authen/verify-email/verify-email.component';
+import { PipeDate } from '../services/pipe/pipe-date';
+import { PipeFill } from '../services/pipe/pipe-fill';
+import { PipePhone } from '../services/pipe/pipe-phone';
 
 
 
@@ -32,8 +40,16 @@ import { NgxPaginationModule } from 'ngx-pagination';
     AdminLayoutComponent,
     UserLayoutComponent,
     ArtistComponent,
-    BookingComponent
-    
+    BookingComponent,
+    LoginComponent,
+    RegisterComponent,
+    ForgotPasswordComponent,
+    VerifyEmailComponent,
+    UserHomeComponent,
+    PipePhone,
+    PipeFill,
+    PipeDate,
+
   ],
   imports: [
     HttpClientModule,
@@ -44,7 +60,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     Ng2OrderModule,
     Ng2SearchPipeModule,
     NgxPaginationModule,
-    
+
   ],
 })
 export class DefaultModule { }

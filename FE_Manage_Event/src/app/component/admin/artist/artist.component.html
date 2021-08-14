@@ -1,25 +1,37 @@
 <h2>List of Artist</h2>
 <div>
-    <input class="form-control" type="search" name="name" [(ngModel)]="name" (ngModelChange)="search()"
+    <input class="form-control" type="search" name="name" [(ngModel)]="firstName" (ngModelChange)="search()"
     placeholder="Enter name to search..." >
 </div>
-<table class="table table-responsive table-bordered table-active">
+<table class="table table-responsive table-bordered table-hover">
     <thead>
         <tr>
-            <th (click)="sort('id')">id&nbsp;<i class="fa fa-sort"></i></th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Phone</th>
-            <th>Achievements</th>
+            <th (click)="sort('id')">Id &nbsp;<i class="fa fa-sort"></i></th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Birthday</th>
+            <th scope="col">Salary</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Actions</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let artist of artists | orderBy: key: reverse |paginate: {itemsPerPage:5, currentPage:page};">
-            <td>{{artist.id}}</td>
-            <td>{{artist.name}}</td>
-            <td>{{artist.email}}</td>
-            <td>{{artist.phone}}</td>
-            <td>{{artist.achievements}}</td>
+        <tr *ngFor="let artist of artists | orderBy: key: reverse | paginate: {itemsPerPage:5, currentPage:page};">
+          <td>{{ artist.id }}</td>
+          <td>{{ artist.firstName }}</td>
+          <td>{{ artist.lastName }}</td>
+          <td>{{ artist.email }}</td>
+          <td>{{ artist.gender }}</td>
+          <td>{{ artist.birthday | date }}</td>
+          <td>{{ artist.salary }}</td>
+          <td>{{ artist.phone | phone }}</td>
+          <td>
+              <span class="ti-plus"></span>&nbsp;
+              <span class="ti-trash"></span>&nbsp;
+              <span class="ti-pencil-alt"></span>
+          </td>
         </tr>
     </tbody>
 </table>

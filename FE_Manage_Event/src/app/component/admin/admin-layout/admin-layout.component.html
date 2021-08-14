@@ -2,9 +2,9 @@
 <div class="sidebar">
         <div class="sidebar-header">
             <h5 class="brand">
-                <span class="ti-crown"></span> 
-                <span>LT_BC</span>
-            </h5> 
+                <span class="ti-microphone"></span>
+                <span>E-music</span>
+            </h5>
             <label for="sidebar-toggle" class="ti-menu-alt"></label>
         </div>
         <div class="sidebar-menu">
@@ -51,39 +51,49 @@
                         <span>Contacts</span>
                     </a>
                 </li>
-                <!-- <li>
-                    <a routerLink="/admin/">
-                        <span class="ti-settings"></span>
-                        <span>Profile</span>
-                    </a>
-                </li> -->
             </ul>
+        </div>
+        <div class="sidebar-footer">
+          <div class="profile-details">
+            <div class="profile-content">
+              <img src="../../../../assets/img/profile.png" alt="profileImg">
+            </div>
+            <div class="name-job">
+              <div class="profile_name">LinhAV</div>
+              <div class="job">Web Desginer</div>
+            </div>
+            <!-- <i class='bx bx-log-out' ></i> -->
+          </div>
         </div>
 </div>
 <div class="main-content">
         <header>
             <div class="search-wrapper">
                 <span class="ti-search"></span>
-                <input type="search" placeholder="Search">
+                <input type="search" placeholder="Search...">
             </div>
-            
+
             <!-- <div class="social-icons">
                 <span class="ti-bell"></span>
                 <span class="ti-comment"></span>
             </div> -->
             <div class="dropdown dropdown-menu-end">
-                <a class="nav-link dropdown-toggle fw-bold" data-toggle="dropdown" 
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown"
                     href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                    {{ username }}
                     <i class="fa fa-user-o text-danger" aria-hidden="true"></i>
                 </a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item text-primary fw-bold" href="#">Profile</a>
-                    <a class="dropdown-item text-primary fw-bold"  href="#">Settings</a>
+                    <a class="dropdown-item text-primary " [routerLink]="['/admin/admin-profile']" routerLinkActive="router-link-active" >
+                      <span class="ti-user"></span> Profile</a>
+                    <a class="dropdown-item text-primary "  href="#">
+                      <span class="ti-settings"></span> Settings</a>
                     <div class="dropdown-divider bg-primary"></div>
-                    <a class="dropdown-item text-danger fw-bold" href="#">Sign Out</a>
+                    <a class="dropdown-item text-danger" (click)="logout()">
+                      <span class="ti-shift-right"></span> Sign Out</a>
                 </div>
             </div>
-        </header> 
+        </header>
         <main>
             <router-outlet></router-outlet>
         </main>

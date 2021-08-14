@@ -1,4 +1,6 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/authen/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private firebaseService: AuthService, private router: Router){}
 
-  ngOnInit(): void {
+  userStatus = this.firebaseService.userStatus;
+
+  logout(){
+    this.firebaseService.logOut();
+    this.router.navigate(["/home"])
+  }
+
+
+  ngOnInit(){
+  
   }
 
 }

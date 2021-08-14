@@ -1,40 +1,11 @@
-/*==================== SHOW MENU ====================*/
+const sign_in_btn = document.querySelector("#sign-in-btn");
+const sign_up_btn = document.querySelector("#sign-up-btn");
+const container = document.querySelector(".container");
 
+sign_up_btn.addEventListener("click", () => {
+  container.classList.add("sign-up-mode");
+});
 
-/*==================== REMOVE MENU MOBILE ====================*/
-
-
-/*==================== SCROLL SECTIONS ACTIVE LINK ====================*/
-
-
-/*==================== SHOW SCROLL TOP ====================*/ 
-
-
-/*==================== DARK LIGHT THEME ====================*/ 
-
-
-/*==================== REDUCE THE SIZE AND PRINT ON AN A4 SHEET ====================*/ 
-
-
-/*==================== REMOVE THE SIZE WHEN THE CV IS DOWNLOADED ====================*/ 
-
-
-/*==================== GENERATE PDF ====================*/ 
-// PDF generated area
-
-
-// Html2pdf options
-
-
-// Function to call areaCv and Html2Pdf options 
-
-
-// When the button is clicked, it executes the three functions
-
-    // 1. The class .scale-cv is added to the body, where it reduces the size of the elements
-
-
-    // 2. The PDF is generated
-
-
-    // 3. The .scale-cv class is removed from the body after 5 seconds to return to normal size.
+sign_in_btn.addEventListener("click", () => {
+  container.classList.remove("sign-up-mode");
+});
