@@ -1,6 +1,4 @@
 import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
-import { forkJoin } from 'rxjs';
-import { Movie } from 'src/app/models/movie';
 import { ArtistService } from 'src/app/services/admin/artist.service';
 
 @Component({
@@ -10,18 +8,12 @@ import { ArtistService } from 'src/app/services/admin/artist.service';
 })
 export class BookingComponent implements OnInit, OnChanges, OnDestroy {
 
-  @Input() abc: string = '';
-  movie: Movie ={
-    id: 1,
-    name: "Star wars",
-    release: 1977
-  }
-  
+
   constructor(private artisService: ArtistService) {
     // goi song song 2 api
-   
-    
-    // goi lan luot 
+
+
+    // goi lan luot
   //   this.artisService.getUserInfo('1').pipe(
   //     concatMap(res => {
   //       return this.artisService.getPostByUserId(res);
@@ -34,7 +26,7 @@ export class BookingComponent implements OnInit, OnChanges, OnDestroy {
   ngOnChanges(changes: SimpleChanges): void {
     if(changes.movie && changes.movie.currentValue) {
       console.log();
-      
+
     }
   }
 

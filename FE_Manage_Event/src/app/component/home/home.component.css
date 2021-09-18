@@ -78,18 +78,20 @@ body{
 }
 .description .buttons button{
     outline: none;
-    padding: 10px 20px;
+    padding: 5px 15px;
     font-size: 1.2em;
     border-radius: 5px;
     cursor: pointer;
     border: none;
-    background: #E91E63;
+    background: linear-gradient(to right, rgb(206, 86, 6) , #df9204b7);
     color: #fff;
 
 }
+.description .buttons button:hover{
+  background: rgb(87, 23, 236);
+}
 .description .buttons button:not(:first-child){
 	margin-left: 0.5em;
-	background: none;
 	color: #fff;
 	border: 1px solid rgba(255,255,255,0.1);
 }
@@ -148,7 +150,7 @@ body{
 .nav_content li:last-child{
 	padding: 5px 12px;
 	border-radius: 5px;
-	background:  #E91E63;
+  background: linear-gradient(to right, rgb(206, 86, 6) , #df9204b7);
 }
 .nav_content li a{
 	text-decoration: none;
@@ -253,7 +255,7 @@ body{
 	margin-left: 10px;
 }
 #actions i:hover{
-	color: #E91E63;
+	color: #f7a409fa;
 }
 /*song description part*/
 #song_desc{
@@ -265,13 +267,13 @@ body{
 	position: absolute;
 	bottom: 5px;
 	right: 2.5em;
-	color: #EC407A;
+	color: rgb(233, 99, 10);
 }
 #song_desc #total_download{
 	position: absolute;
 	bottom: 10px;
 	right: 22%;
-	color: #EC407A;
+	color: rgb(19, 155, 15);
 }
 #song_desc p:nth-child(1){
 	text-transform: capitalize;
@@ -282,14 +284,14 @@ body{
 	font-size: 0.9em;
 }
 
-/*all id ~ heading*/
+
 #heading{
 	color: #fff;
 	font-size: 1.8em;
 	font-family: cursive;
 }
 
-/*actions_2 (share & download button)*/
+
 #actions_2{
 	min-width: 5%;
 	padding: 3px;
@@ -312,7 +314,7 @@ body{
   top: 0;
   left: 0;
   height: 4px;
-  background: linear-gradient(to right, #cc33ff 0%, #ff0066 100%);
+  background-color: linear-gradient(to right, #c43c06 0%, #e09304 100%);
   width: 0%;
   z-index: 100;
 }
@@ -359,6 +361,7 @@ body{
 }
 #social{
 	margin-top: 15px;
+  font-size: 1.5em;
 }
 #social a{
 	text-decoration: none;
@@ -374,17 +377,17 @@ body{
 	letter-spacing: 1px;
 }
 
-/*scroll bar style*/
+
 ::-webkit-scrollbar {
 	height: 8px;
     width: 7px;
 }
 ::-webkit-scrollbar-thumb {
-	background: linear-gradient(to right ,transparent, #EC407A);
+	background: linear-gradient(to right ,transparent, #df730f);
 	border-radius: 5px;
 }
 
-/*popular_creator*/
+
 .popular_creator{
 	margin: 5em 0;
 	min-height: 100px;
@@ -462,14 +465,13 @@ body{
 }
 
 
-/*down arrow icon (this arrow visible when screen size will be 700px)*/
 #responsive_menu{
 	font-size: 2em;
 	color: #fff;
 	display: none;
 }
 
-/*these codes will only execute when the screen size will be 700px*/
+
 @media(max-width: 700px){
 	#responsive_menu{
 	   display: block;
@@ -542,7 +544,7 @@ body{
 
 }
 
-/* & these codes will execute when the screen size will be 500px*/
+
 @media(max-width: 500px){
     #song_desc p:nth-child(1){
     	font-size: 0.9em;

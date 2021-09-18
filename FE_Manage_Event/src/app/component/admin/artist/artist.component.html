@@ -1,4 +1,4 @@
-<h2>List of Artist</h2>
+<!-- <h2>List of artist</h2>
 <div>
     <input class="form-control" type="search" name="name" [(ngModel)]="firstName" (ngModelChange)="search()"
     placeholder="Enter name to search..." >
@@ -35,4 +35,182 @@
         </tr>
     </tbody>
 </table>
-<pagination-controls (pageChange)="page = $event"></pagination-controls>
+<pagination-controls (pageChange)="page = $event"></pagination-controls> -->
+
+
+<p-toast></p-toast>
+
+<div class="card">
+    <p-toolbar styleClass="p-mb-4">
+        <ng-template pTemplate="left">
+            <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2" (click)="openNew()"></button>
+            <!-- <button pButton pRipple [label]="Delete" icon="pi pi-trash" class="p-button-danger" (click)="deleteSelectedArtists()" [disabled]="!selectedArtists || !selectedArtists.length"></button> -->
+        </ng-template>
+
+        <ng-template pTemplate="right">
+            <p-fileUpload mode="basic" accept="image/*" [maxFileSize]="1000000" label="Import" chooseLabel="Import" class="p-mr-2 p-d-inline-block"></p-fileUpload>
+            <button pButton pRipple label="Export" icon="pi pi-upload" class="p-button-help"></button>
+        </ng-template>
+    </p-toolbar>
+
+    <p-table responsiveLayout="scroll" #dt [value]="artists" [rows]="10" [paginator]="true" [globalFilterFields]="['name','country.name','representative.name','status']"
+        [(selection)]="selectedArtists" [rowHover]="true" dataKey="id"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+        <ng-template pTemplate="caption">
+            <div class="p-d-flex p-ai-center p-jc-between">
+                <h5 class="p-m-0">Manage Artists</h5>
+                <span class="p-input-icon-left">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="dt.filterGlobal($event.target, 'contains')" placeholder="Search..." />
+                </span>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+          <tr>
+            <th style="width: 3rem">
+              <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+            </th>
+            <th pSortableColumn="id">
+              <div class="p-d-flex p-jc-between p-ai-center">
+                Id
+                  <p-sortIcon field="id"></p-sortIcon>
+              </div>
+            </th>
+            <th pSortableColumn="firstName">
+                  <div class="p-d-flex p-jc-between p-ai-center">
+                    First Name
+                      <p-sortIcon field="firstName"></p-sortIcon>
+
+                  </div>
+            </th>
+            <th pSortableColumn="lastName">
+              <div class="p-d-flex p-jc-between p-ai-center">
+                Last Name
+                  <p-sortIcon field="lastName"></p-sortIcon>
+
+              </div>
+            </th>
+            <th pSortableColumn="email">
+              <div class="p-d-flex p-jc-between p-ai-center">
+                Email
+                <p-sortIcon field="email"></p-sortIcon>
+              </div>
+            </th>
+            <th pSortableColumn="gender">
+              <div class="p-d-flex p-jc-between p-ai-center">
+                Gender
+                  <p-sortIcon field="gender"></p-sortIcon>
+              </div>
+            </th>
+            <th pSortableColumn="birthday">
+              <div class="p-d-flex p-jc-between p-ai-center">
+                Birthday
+                  <p-sortIcon field="birthday"></p-sortIcon>
+              </div>
+            </th>
+            <th pSortableColumn="phone">
+              <div class="p-d-flex p-jc-between p-ai-center">
+                Phone
+                  <p-sortIcon field="phone"></p-sortIcon>
+              </div>
+            </th>
+            <th pSortableColumn="photoURL">
+              <div class="p-d-flex p-jc-between p-ai-center">
+                  Photo
+                  <p-sortIcon field="photoURL"></p-sortIcon>
+              </div>
+            </th>
+            <th style="width: 12rem">Actions</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-artist>
+            <tr>
+                <td>
+                    <p-tableCheckbox [value]="artist"></p-tableCheckbox>
+                </td>
+                <td>{{ artist.id }}</td>
+                <td>{{ artist.firstName }}</td>
+                <td>{{ artist.lastName }}</td>
+                <td>{{ artist.email }}</td>
+                <td>{{ artist.gender }}</td>
+                <td>{{ artist.birthday | date }}</td>
+                <td>{{ artist.phone | phone }}</td>
+                <td>
+                  <img [alt]="artist.firstName" src="../../../../assets/img/avatar/amyelsner.png" width="32" style="vertical-align: middle" />
+                </td>
+                <td>
+                    <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" (click)="editArtist(artist)"></button>&nbsp;
+                    <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deleteArtist(artist)"></button>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="summary">
+            <div class="p-d-flex p-ai-center p-jc-between">
+                In total there are {{artists ? artists.length : 0 }} artists.
+            </div>
+        </ng-template>
+    </p-table>
+</div>
+
+<p-dialog [(visible)]="artistDialog" [style]="{width: '450px'}" header="Artist information" [modal]="true" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+        <img src="../../../../assets/img/profile.png"class="artist-image">
+        <div class="p-field">
+            <label for="firstName">First Name</label>
+            <input type="text" pInputText id="firstName" [(ngModel)]="artist.firstName" required autofocus />
+            <small class="p-error" *ngIf="submitted && !artist.firstName">First Name is required.</small>
+        </div>
+        <div class="p-field">
+          <label for="lastName">Last Name</label>
+          <input type="text" pInputText id="lastName" [(ngModel)]="artist.lastName" required autofocus />
+          <small class="p-error" *ngIf="submitted && !artist.lastName">Last Name is required.</small>
+        </div>
+        <div class="p-field">
+          <label for="email">Email</label>
+          <input type="email" pInputText id="email" [(ngModel)]="artist.email" required autofocus />
+          <small class="p-error" *ngIf="submitted && !artist.email">Email is required.</small>
+        </div>
+        <div class="p-field">
+          <label for="phone">Phone Number</label>
+          <input type="text" pInputText id="phone" [(ngModel)]="artist.phone" required autofocus />
+          <small class="p-error" *ngIf="submitted && !artist.phone">Phone Number is required.</small>
+        </div>
+        <div class="p-field">
+          <label for="birthday">Birthday</label>
+          <p-calendar [(ngModel)]="artist.birthday" [monthNavigator]="true" [yearNavigator]="true" yearRange="1970:2030" inputId="navigators"></p-calendar>
+          <small class="p-error" *ngIf="submitted && !artist.birthday">Birthday Number is required.</small>
+        </div>
+
+        <div class="p-field">
+            <label class="p-mb-3">Gender</label>
+            <div class="p-formgrid p-grid">
+                <div class="p-field-radiobutton p-col-6">
+                    <p-radioButton id="category1" name="category" value="Male" [(ngModel)]="artist.gender"></p-radioButton>
+                    <label for="category1">Male</label>
+                </div>
+                <div class="p-field-radiobutton p-col-6">
+                    <p-radioButton id="category2" name="category" value="Female" [(ngModel)]="artist.gender"></p-radioButton>
+                    <label for="category2">Female</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class="p-formgrid p-grid">
+            <div class="p-field p-col">
+                <label for="salary">Salary</label>
+                <p-inputNumber id="salary" [(ngModel)]="artist.salary" mode="currency" currency="USD" locale="en-US"></p-inputNumber>
+            </div>
+            <div class="p-field p-col">
+                <label for="photoURL">Photo</label>
+                <p-inputNumber id="photoURL" [(ngModel)]="artist.photoURL"></p-inputNumber>
+            </div>
+        </div> -->
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="saveArtist()"></button>
+        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+    </ng-template>
+</p-dialog>
+
+<p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>

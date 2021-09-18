@@ -1,27 +1,53 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Artist } from 'src/app/models/admin/artist.model';
 import { ArtistService } from 'src/app/services/admin/artist.service';
+import { ConfirmationService } from 'primeng/api';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-artist',
   templateUrl: './artist.component.html',
-  styleUrls: ['./artist.component.css']
+  styleUrls: ['./artist.component.scss'],
+  styles: [`
+        :host ::ng-deep .p-dialog .artist-image {
+            width: 150px;
+            margin: 0 auto 2rem auto;
+            display: block;
+        }
+    `],
+  providers: [MessageService,ConfirmationService]
 })
 export class ArtistComponent implements OnInit {
 
-  artists : Artist[] = [];
   firstName: any;
   lastName: any;
   page: number = 1;
   public artistForm?: FormGroup;
-  selected = '-1';
+
   hideWhenNoStudent: boolean = false;
   noData: boolean = false;
 
-  constructor(private artistService: ArtistService,public fb: FormBuilder,
-    public toastr: ToastrService) { }
+    loading: boolean = true;
+
+    artistDialog?: boolean;
+
+    artists: Artist[] = [];
+
+    artist!: Artist;
+
+    selectedArtists!: Artist[];
+
+    submitted?: boolean;
+
+    statuses?: any[];
+
+  constructor(private artistService: ArtistService,
+    public fb: FormBuilder, public toastr: ToastrService,
+    private messageService: MessageService,
+    private confirmationService: ConfirmationService) {}
 
   ngOnInit(): void {
 
@@ -31,6 +57,7 @@ export class ArtistComponent implements OnInit {
     let s = this.artistService.GetArtistList();
     s.snapshotChanges().subscribe(data => {
       this.artists = [];
+      this.loading = false;
       data.forEach(item => {
         let a = item.payload.toJSON();
         // a['$key'] = item.key;
@@ -38,6 +65,88 @@ export class ArtistComponent implements OnInit {
       })
     })
   }
+  openNew() {
+    this.artist = {};
+    this.submitted = false;
+    this.artistDialog = true;
+  }
+  deleteSelectedArtists() {
+    this.confirmationService.confirm({
+        message: 'Are you sure you want to delete the selected artists?',
+        header: 'Confirm',
+        icon: 'pi pi-exclamation-triangle',
+        accept: () => {
+            this.artists = this.artists.filter(val => !this.selectedArtists.includes(val));
+            // this.selectedArtists = null;
+            this.messageService.add({severity:'success', summary: 'Successful', detail: 'Artist Deleted', life: 3000});
+        }
+    });
+}
+
+editArtist(artist: Artist) {
+    this.artist = {...artist};
+    this.artistDialog = true;
+}
+
+deleteArtist(artist: Artist) {
+    this.confirmationService.confirm({
+        message: 'Are you sure you want to delete ' + artist.firstName + '?',
+        header: 'Confirm',
+        icon: 'pi pi-exclamation-triangle',
+        accept: () => {
+            this.artists = this.artists.filter(val => val.id !== artist.id);
+            this.artist = {};
+            this.messageService.add({severity:'success', summary: 'Successful', detail: 'Artist Deleted', life: 3000});
+        }
+    });
+}
+
+hideDialog() {
+    this.artistDialog = false;
+    this.submitted = false;
+}
+
+saveArtist() {
+    this.submitted = true;
+
+    if (this.artist.firstName?.trim()) {
+        if (this.artist.id) {
+            this.artists[this.findIndexById(this.artist.id)] = this.artist;
+            this.messageService.add({severity:'success', summary: 'Successful', detail: 'Artist Updated', life: 3000});
+        }
+        else {
+            this.artist.id = this.createId();
+            this.artist.photoURL = 'artist-placeholder.svg';
+            this.artists.push(this.artist);
+            this.messageService.add({severity:'success', summary: 'Successful', detail: 'Artist Created', life: 3000});
+        }
+
+        this.artists = [...this.artists];
+        this.artistDialog = false;
+        this.artist = {};
+    }
+}
+
+findIndexById(id: string): number {
+    let index = -1;
+    for (let i = 0; i < this.artists.length; i++) {
+        if (this.artists[i].id === id) {
+            index = i;
+            break;
+        }
+    }
+
+    return index;
+}
+
+createId(): string {
+    let id = '';
+    var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    for ( var i = 0; i < 5; i++ ) {
+        id += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    return id;
+}
 
   dataState() {
     this.artistService.GetArtistList().valueChanges().subscribe(data => {

@@ -7,34 +7,43 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="theme-color" content="#000000">
     <meta name="viewport" content="width=device-width , initial-scale=1">
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.0.4/popper.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
   </head>
   <body>
 
     <div class="main">
       <div class="progress_bar" id="Bar"></div>
-      <img src="../../../assets/img/bgg.jpg" alt="" id="bg">
+      <img src="../../../assets/img/bgg.jpg" alt="" class="img-responsive" id="bg">
       <div class="navbar">
-        <a href="#" id="logo"><i class='bx bxs-bar-chart-alt-2' ></i>&nbsp;E-Music</a>
+        <a id="logo">卐 &nbsp;E-Psychicism</a>
         <a id="responsive_menu"><i class='bx bxs-chevron-down' ></i></a>
 
         <div class="nav_content">
           <li><a href="#">Home</a></li>
+          <li><a [routerLink]="['/user/blog']">Blogs</a></li>
           <li><a href="#top_tracks">Tracks</a></li>
           <li><a href="#user_comments">Comments</a></li>
           <li><a href="#">Contact</a></li>
           <li><a [routerLink]="['/login']" routerLinkActive="router-link-active" >start for free</a></li>
         </div>
 
-      <a (click)="toggle()" id="menu_btn"><i class='bx bx-menu-alt-left'></i></a>
-        <div *ngIf="show" @ngIfAnimation class="side_menu">
-          <li @easeInOut><a href="#"><i class='bx bx-category'></i></a></li>
-          <li @easeInOut><a href="#"><i class='bx bx-tv'></i></a></li>
-          <li @easeInOut><a href="#"><i class='bx bxs-movie-play'></i></a></li>
-          <li @easeInOut><a href="#"><i class='bx bxs-message-square-detail'></i></a></li>
-          <li @easeInOut><a href="#"><i class='bx bx-merge'></i></a></li>
-          <li @easeInOut><a href="#"><i class='bx bxs-cart-add'></i></a></li>
+      <!-- <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button"
+            id="dropdownMenuButton menu_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class='bx bx-menu-alt-left'></i>
+        </button>
+        <div class="side_menu dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <li><a href="#"><i class='bx bx-category dropdown-menu'></i></a></li>
+          <li><a href="#"><i class='bx bx-tv dropdown-menu'></i></a></li>
+          <li><a href="#"><i class='bx bxs-movie-play dropdown-menu'></i></a></li>
+          <li><a href="#"><i class='bx bxs-message-square-detail dropdown-menu'></i></a></li>
+          <li><a href="#"><i class='bx bx-merge dropdown-menu'></i></a></li>
+          <li><a href="#"><i class='bx bxs-cart-add dropdown-menu'></i></a></li>
         </div>
+      </div> -->
       </div>
 
          <!--  mid part -->
@@ -181,8 +190,8 @@
                   <div id="user_c">
                     <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.The point of using Lorem Ipsum is that it has</p>
                     <div id="social">
-                      <a><i class='bx bxl-facebook-circle' ></i></a>
-                      <a><i class='bx bxl-twitter' ></i></a>
+                      <a><i class='bx bxl-facebook-circle' ></i></a>&nbsp;
+                      <a><i class='bx bxl-instagram-alt' ></i></a>
                     </div>
                   </div>
                 </div>
@@ -195,8 +204,8 @@
                   <div id="user_c">
                     <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.The point of using Lorem Ipsum is that it has</p>
                     <div id="social">
-                      <a><i class='bx bxl-facebook-circle' ></i></a>
-                      <a><i class='bx bxl-twitter' ></i></a>
+                      <a><i class='bx bxl-facebook-circle' ></i></a>&nbsp;
+                      <a><i class='bx bxl-instagram-alt' ></i></a>
                     </div>
                   </div>
                 </div>
@@ -209,8 +218,8 @@
                   <div id="user_c">
                     <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.The point of using Lorem Ipsum is that it has</p>
                     <div id="social">
-                      <a><i class='bx bxl-facebook-circle' ></i></a>
-                      <a><i class='bx bxl-twitter' ></i></a>
+                      <a><i class='bx bxl-facebook-circle' ></i></a>&nbsp;
+                      <a><i class='bx bxl-instagram-alt' ></i></a>
                     </div>
                   </div>
                 </div>
@@ -223,8 +232,8 @@
                   <div id="user_c">
                     <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.The point of using Lorem Ipsum is that it has</p>
                     <div id="social">
-                      <a><i class='bx bxl-facebook-circle' ></i></a>
-                      <a><i class='bx bxl-twitter' ></i></a>
+                      <a><i class='bx bxl-facebook-circle' ></i></a>&nbsp;
+                      <a><i class='bx bxl-instagram-alt' ></i></a>
                     </div>
                   </div>
                 </div>
@@ -300,11 +309,11 @@
 
           <!-- footer part -->
       <div class="footer">
-        <a id="logo"><i class='bx bxs-bar-chart-alt-2' ></i>&nbsp;Music</a>
+        <span id="logo">卐 &nbsp;E-Psychicism</span>
         <div class="social_handle">
-          <i class='bx bxl-twitter' ></i>
-          <i class='bx bxl-twitch'></i>
-          <i class='bx bxl-github' ></i>
+          <i class='bx bxl-facebook-circle text-primary' ></i>&nbsp;
+          <i class='bx bxl-instagram-alt'></i>&nbsp;
+          <i class='bx bxl-google-plus-circle' ></i>
         </div>
       </div>
 

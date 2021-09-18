@@ -4,7 +4,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DefaultModule } from './component/default.module';
-import { HttpClientModule } from '@angular/common/http';
 import { Ng2OrderModule } from 'ng2-order-pipe';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgxPaginationModule } from 'ngx-pagination';
@@ -17,10 +16,9 @@ import { AuthService } from './services/authen/auth.service';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { ToastrModule } from 'ngx-toastr';
 import { UserService } from './services/user/users.service';
-import { PipeDate } from './services/pipe/pipe-date';
-import { PipeFill } from './services/pipe/pipe-fill';
-import { PipePhone } from './services/pipe/pipe-phone';
+import { HttpClientModule } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
+import { MessageService, ConfirmationService } from 'primeng/api';
 
 @NgModule({
   declarations: [
@@ -33,7 +31,6 @@ import { DatePipe } from '@angular/common';
     ReactiveFormsModule,
     AppRoutingModule,
     DefaultModule,
-    HttpClientModule,
     Ng2OrderModule,
     Ng2SearchPipeModule,
     NgxPaginationModule,
@@ -42,10 +39,11 @@ import { DatePipe } from '@angular/common';
     AngularFireAuthModule,
     AngularFirestoreModule,
     AngularFireDatabaseModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    HttpClientModule,
 
   ],
-  providers: [AuthService, UserService,DatePipe],
+  providers: [AuthService, UserService,DatePipe,MessageService, ConfirmationService],
 
   bootstrap: [AppComponent]
 })

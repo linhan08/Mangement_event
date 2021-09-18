@@ -16,6 +16,7 @@ import { RegisterComponent } from './component/authen/register/register.componen
 import { AuthGuard } from './services/authen/auth.guard';
 import { ForgotPasswordComponent } from './component/authen/forgot-password/forgot-password.component';
 import { UserHomeComponent } from './component/user/user-home/user-home.component';
+import { BlogComponent } from './component/user/blog/blog.component';
 
 const routes: Routes = [
     {
@@ -51,6 +52,11 @@ const routes: Routes = [
         {
           path: 'user-home',
           component: UserHomeComponent,
+          canActivate: [AuthGuard]
+        },
+        {
+          path: 'blog',
+          component: BlogComponent,
           canActivate: [AuthGuard]
         }
       ]
